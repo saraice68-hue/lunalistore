@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>☾ Lunalí Store Streaming ☾</title>
+<style>
+body{margin:0;font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#ff9acb,#ff4fa3);display:flex;justify-content:center;padding:20px}
+.container{width:100%;max-width:520px;background:#fff0f6;border-radius:25px;padding:25px 15px;box-shadow:0 15px 35px rgba(0,0,0,0.25);display:flex;flex-direction:column;align-items:center}
+h1{text-align:center;color:#c2185b;margin-bottom:15px;font-size:1.6rem}
+.guia{width:90%;background:#ffd6eb;padding:15px;border-radius:18px;margin-bottom:15px;color:#880e4f;font-size:0.95rem}
+input{display:block;width:90%;max-width:420px;margin:10px auto;padding:14px;border-radius:16px;border:2px solid #ff80b5;font-size:1rem;box-sizing:border-box}
+#perfilBtns{width:90%;display:flex;justify-content:center;gap:10px;margin:15px 0;flex-wrap:wrap}
+#perfilBtns button{padding:8px 16px;border:none;border-radius:20px;background:#f8bbd0;color:#880e4f;font-weight:bold;cursor:pointer}
+#perfilBtns button.active{background:#c2185b;color:white}
+#salida{width:90%;background:#ffffff;padding:15px;border-radius:18px;min-height:220px;white-space:pre-wrap;font-family:monospace;color:#880e4f;border:2px dashed #ff80b5}
+#copiarBtn{width:90%;margin-top:18px;padding:14px;background:#c2185b;color:white;border:none;border-radius:30px;font-size:1rem;cursor:pointer}
+#copiarBtn:disabled{opacity:0.8}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>࣪ ִֶָ☾. 𝑳𝒖𝒏𝒂𝒍𝒊 𝑺𝒕𝓸𝓻𝓮 𝓢𝓽𝓻𝓮𝓪𝓶𝓲𝓷𝓰 ࣪ ִֶָ☾.</h1>
+
+<div class="guia">
+<b>Guía:</b><br>
+n: Netflix<br>
+m: Max<br>
+p: Prime Video<br>
+pr: Paramount+<br>
+v: Vix<br>
+va: Vix Anual (6 meses garantía)<br>
+d: Disney+<br>
+c: ChatGPT<br>
+cr: Crunchyroll<br>
+s: Spotify<br>
+s3: Spotify 3 meses (70 días garantía)<br>
+yf: YouTube Familiar<br>
+En "Tipo", escribe <b>c</b> para COMPLETA.
+</div>
+
+<input id="plataforma" placeholder="Plataforma">
+<input id="correo" placeholder="Correo">
+<input id="contrasena" placeholder="Contraseña">
+<input id="tipo" placeholder="Tipo (c = Completa)">
+
+<div id="perfilBtns"></div>
+<div id="salida"></div>
+<button id="copiarBtn">📋 Copiar todo</button>
+</div>
+
+<script>
+const plataformas={
+n:"NETFLIX",m:"MAX",p:"PRIME VIDEO",pr:"PARAMOUNT+",v:"VIX",va:"VIX ANUAL",d:"DISNEY+",c:"CHATGPT",cr:"CRUNCHYROLL",s:"SPOTIFY",s3:"SPOTIFY 3 MESES",yf:"YOUTUBE FAMILIAR"
+};
+
+let perfil="P1";
+
+function crearPerfiles(){
+perfilBtns.innerHTML="";
+const p=plataforma.value.toLowerCase();
+if(tipo.value.toLowerCase()==="c"){perfil="COMPLETA";perfilBtns.style.display="none";return}
+if(p==="yf"){perfil="FAMILIAR";perfilBtns.style.display="none";return}
+perfilBtns.style.display="flex";
+let total=5;
+if(p==="d"||p==="c")total=7;
+else if(p==="pr"||p==="p")total=6;
+for(let i=1;i<=total;i++){
+const b=document.createElement("button");
+b.textContent="P"+i;
+if(i===1){b.classList.add("active");perfil="P1"}
+b.onclick=()=>{document.querySelectorAll("#perfilBtns button").forEach(x=>x.classList.remove("active"));b.classList.add("active");perfil=b.textContent;generar()}
+perfilBtns.appendChild(b)
+}
+}
+
+function generar(){
+const p=plataforma.value.toLowerCase();
+if(!plataformas[p]||!correo.value||!contrasena.value){salida.textContent="";return}
+let garantia="25 DÍAS DE GARANTÍA DESDE EL ACCESO";
+if(p==="va")garantia="6 MESES DE GARANTÍA DESDE EL ACCESO";
+if(p==="s3")garantia="70 DÍAS DE GARANTÍA DESDE EL ACCESO";
+const f=new Date();
+const meses=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+const fechaTxt=`${f.getDate()} ${meses[f.getMonth()]} ${f.getFullYear()}`;
+salida.textContent=`╔═🌙 ࣪ ִֶָ☾ 𝓛𝓾𝓷𝓪𝓵𝓲 𝓢𝓽𝓸𝓻𝓮 𝓢𝓽𝓻𝓮𝓪𝓶𝓲𝓷𝓰 ☾ ࣪ ִֶָ🌙═╗\n✨ ${plataformas[p]} • ${fechaTxt} ✨\n💌 Correo 💌: ${correo.value}\n🔐 Contraseña 🔐: ${contrasena.value}\n👤 Perfil 👤: ${perfil}\n╠══🫧 𝓡𝓮𝓰𝓵𝓪𝓼 𝓭𝓮 𝓖𝓪𝓻𝓪𝓷𝓽í𝓪 🫧══╣\n⚠️ REPORTAR SIN VERIFICAR O REPORTAR UNA CUENTA QUE ‼️SÍ‼️ FUNCIONA ANULA LA GARANTÍA ⚠️\n⏳ CONFIRMA TU ACCESO EN 10 MINUTOS, DESPUÉS DE ESTE TIEMPO ENTRARÁ A REPORTE 🚨\n🌸 ${garantia}\n💖 NO CAMBIAR CONTRASEÑA, NOMBRE O CORREO NI DATOS DEL PERFIL SIN PERMISO\n🍒 DUDAS: https://chat.whatsapp.com/If3EWP838ybKNueDO2Fy5e?mode=gi_t\n🌜CÓDIGOS: https://chat.whatsapp.com/LaA7Zdc5w3k4TrKxngrYrk?mode=gi_t\n🚩 REPORTES: https://forms.gle/Y7sHyL7Gouchfwuc8\n╚═🐾 𝓖𝓻𝓪𝓬𝓲𝓪𝓼 𝓹𝓸𝓻 𝓽𝓾 𝓬𝓸𝓶𝓹𝓻𝓪 🐾══╝`;
+}
+
+document.querySelectorAll("input").forEach(i=>i.oninput=()=>{crearPerfiles();generar()});
+
+copiarBtn.onclick=()=>{
+if(!salida.textContent)return;
+copiarBtn.textContent="Copiando...";
+copiarBtn.disabled=true;
+navigator.clipboard.writeText(salida.textContent).then(()=>{
+copiarBtn.textContent="Texto copiado ✓";
+setTimeout(()=>{copiarBtn.textContent="📋 Copiar todo";copiarBtn.disabled=false},2000)
+})
+};
+
+crearPerfiles();
+</script>
+
+</body>
+</html>
