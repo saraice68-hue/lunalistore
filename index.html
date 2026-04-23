@@ -21,7 +21,7 @@ input{display:block;width:90%;max-width:420px;margin:10px auto;padding:14px;bord
 <body>
 
 <div class="container">
-<h1>࣪ ִֶָ☾. 𝑳𝒖𝒏𝒂𝒍𝒊 𝑺𝒕𝓸𝓻𝓮 𝓢𝓽𝓻𝓮𝓪𝓶𝓲𝓷𝓰 ࣪ ִֶָ☾.</h1>
+<h1>☾✨ 𝕃𝕌ℕ𝔸𝕃𝕀 𝕊𝕋ℝ𝔼𝔸𝕄𝕀ℕ𝔾 ✨☽</h1>
 
 <div class="guia">
 <b>Guía:</b><br>
@@ -30,12 +30,12 @@ m: Max<br>
 p: Prime Video<br>
 pr: Paramount+<br>
 v: Vix<br>
-va: Vix Anual (6 meses garantía)<br>
+va: Vix Anual<br>
 d: Disney+<br>
 c: ChatGPT<br>
 cr: Crunchyroll<br>
 s: Spotify<br>
-s3: Spotify 3 meses (70 días garantía)<br>
+s3: Spotify 3 meses<br>
 yf: YouTube Familiar<br>
 En "Tipo", escribe <b>c</b> para COMPLETA.
 </div>
@@ -78,13 +78,35 @@ perfilBtns.appendChild(b)
 function generar(){
 const p=plataforma.value.toLowerCase();
 if(!plataformas[p]||!correo.value||!contrasena.value){salida.textContent="";return}
-let garantia="25 DÍAS DE GARANTÍA DESDE EL ACCESO";
-if(p==="va")garantia="6 MESES DE GARANTÍA DESDE EL ACCESO";
-if(p==="s3")garantia="70 DÍAS DE GARANTÍA DESDE EL ACCESO";
+
 const f=new Date();
 const meses=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
 const fechaTxt=`${f.getDate()} ${meses[f.getMonth()]} ${f.getFullYear()}`;
-salida.textContent=`╔═🌙 ࣪ ִֶָ☾ 𝓛𝓾𝓷𝓪𝓵𝓲 𝓢𝓽𝓸𝓻𝓮 𝓢𝓽𝓻𝓮𝓪𝓶𝓲𝓷𝓰 ☾ ࣪ ִֶָ🌙═╗\n✨ ${plataformas[p]} • ${fechaTxt} ✨\n💌 Correo 💌: ${correo.value}\n🔐 Contraseña 🔐: ${contrasena.value}\n👤 Perfil 👤: ${perfil}\n╠══🫧 𝓡𝓮𝓰𝓵𝓪𝓼 𝓭𝓮 𝓖𝓪𝓻𝓪𝓷𝓽í𝓪 🫧══╣\n⚠️ REPORTAR SIN VERIFICAR O REPORTAR UNA CUENTA QUE ‼️SÍ‼️ FUNCIONA ANULA LA GARANTÍA ⚠️\n⏳ CONFIRMA TU ACCESO EN 10 MINUTOS, DESPUÉS DE ESTE TIEMPO ENTRARÁ A REPORTE 🚨\n🌸 ${garantia}\n💖 NO CAMBIAR CONTRASEÑA, NOMBRE O CORREO NI DATOS DEL PERFIL SIN PERMISO\n🍒 DUDAS: https://chat.whatsapp.com/If3EWP838ybKNueDO2Fy5e?mode=gi_t\n🌜CÓDIGOS: https://chat.whatsapp.com/LaA7Zdc5w3k4TrKxngrYrk?mode=gi_t\n🚩 REPORTES: https://forms.gle/Y7sHyL7Gouchfwuc8\n╚═🐾 𝓖𝓻𝓪𝓬𝓲𝓪𝓼 𝓹𝓸𝓻 𝓽𝓾 𝓬𝓸𝓶𝓹𝓻𝓪 🐾══╝`;
+
+salida.textContent=`☾✨ 𝕃𝕌ℕ𝔸𝕃𝕀 𝕊𝕋ℝ𝔼𝔸𝕄𝕀ℕ𝔾 ✨☽
+🐇🌜${plataformas[p]}🌛🐇 • ${fechaTxt}
+
+💌 Correo 💌: ${correo.value}
+🔐 Contraseña 🔐: ${contrasena.value}
+👤 Perfil 👤: ${perfil}
+
+> 🫧 𝓡𝓮𝓰𝓵𝓪𝓼 𝓭𝓮 𝓖𝓪𝓻𝓪𝓷𝓽í𝓪 🫧
+
+⚠️ *Reportar sin verificar* o reportar una cuenta que sí funciona *anula la garantía.* ⚠️
+⏳ Confirma tu acceso en un máximo de *10 minutos*, después de ese tiempo *entrará a reporte.* ⏳
+🌸 *25 días de garantía a partir la entrega* 🌸
+💖 *No cambiar contraseña, nombre, correo, datos del perfil ni ingresar o modificar el apartado de facturación sin permiso.* 💖
+
+🍒 DUDAS:
+https://chat.whatsapp.com/If3EWP838ybKNueDO2Fy5e?mode=gi_t
+
+🌜 CÓDIGOS:
+https://chat.whatsapp.com/LaA7Zdc5w3k4TrKxngrYrk?mode=gi_t
+
+🚩 REPORTES:
+https://forms.gle/Y7sHyL7Gouchfwuc8
+
+🐇🌜 𝓖𝓻𝓪𝓬𝓲𝓪𝓼 𝓹𝓸𝓻 𝓽𝓾 𝓬𝓸𝓶𝓹𝓻𝓪 🌛🐇`;
 }
 
 document.querySelectorAll("input").forEach(i=>i.oninput=()=>{crearPerfiles();generar()});
