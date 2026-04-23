@@ -3,62 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lunalí Streaming</title>
+<title>☾ Lunalí Store Streaming ☾</title>
 
 <style>
-body{
-margin:0;
-font-family:'Segoe UI',sans-serif;
-background:linear-gradient(135deg,#ff9acb,#ff4fa3);
-display:flex;
-justify-content:center;
-padding:20px
-}
-.container{
-width:100%;
-max-width:520px;
-background:#fff0f6;
-border-radius:25px;
-padding:25px 15px;
-box-shadow:0 15px 35px rgba(0,0,0,0.25);
-display:flex;
-flex-direction:column;
-align-items:center
-}
-input{
-display:block;
-width:90%;
-margin:10px auto;
-padding:14px;
-border-radius:16px;
-border:2px solid #ff80b5;
-font-size:1rem
-}
-#perfilBtns{
-display:flex;
-gap:10px;
-margin:15px 0
-}
-#perfilBtns button{
-padding:8px 16px;
-border:none;
-border-radius:20px;
-background:#f8bbd0;
-cursor:pointer
-}
-#perfilBtns button.active{
-background:#c2185b;
-color:white
-}
-#salida{
-width:90%;
-background:#fff;
-padding:15px;
-border-radius:18px;
-white-space:pre-wrap;
-font-family:monospace;
-border:2px dashed #ff80b5
-}
+body{margin:0;font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#ff9acb,#ff4fa3);display:flex;justify-content:center;padding:20px}
+.container{width:100%;max-width:520px;background:#fff0f6;border-radius:25px;padding:25px 15px;box-shadow:0 15px 35px rgba(0,0,0,0.25);display:flex;flex-direction:column;align-items:center}
+input{display:block;width:90%;max-width:420px;margin:10px auto;padding:14px;border-radius:16px;border:2px solid #ff80b5;font-size:1rem}
+#perfilBtns{display:flex;gap:10px;margin:15px 0}
+#perfilBtns button{padding:8px 16px;border:none;border-radius:20px;background:#f8bbd0;cursor:pointer}
+#perfilBtns button.active{background:#c2185b;color:white}
+#salida{width:90%;background:#fff;padding:15px;border-radius:18px;white-space:pre-wrap;font-family:monospace;border:2px dashed #ff80b5}
 </style>
 
 </head>
@@ -137,59 +91,70 @@ const f=new Date();
 const meses=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
 const fecha=`${f.getDate()} ${meses[f.getMonth()]} ${f.getFullYear()}`;
 
+// 🔥 GARANTÍA
 let garantia="25 días a partir de la entrega";
 if(p==="va") garantia="6 meses de garantía";
 if(p==="s3") garantia="70 días de garantía";
 
+
 // 🔴 COMPLETA
 if(tipo.value.toLowerCase()==="c"){
-salida.textContent=`> ✨ LUNALI STREAMING ✨
+salida.textContent=`> *☾✨ LUNALI STREAMING ✨☽*
 
-🐇 ${plataformas[p]} • ${fecha}
+🐇🌜*${plataformas[p]}*🌛🐇 • ${fecha}
 
-Correo: ${correo.value}
-Contraseña: ${contrasena.value}
-Perfil: COMPLETA
+💌 Correo 💌: ${correo.value}
+🔐 Contraseña 🔐: ${contrasena.value}
+👤 Perfil 👤: COMPLETA
 
-⚠️ REGLAS:
-❌ No cambiar datos
-❌ No modificar facturación
-⚠️ Máximo 5 dispositivos por cuenta
+> 🫧 Reglas de Garantía 🫧
 
-⏳ Confirmar en 10 minutos
-📸 Enviar comprobante
+⏳ *CONFIRMA TU ACCESO*
+En máximo 10 minutos  
+📸 Envía comprobante
 
-💖 GARANTÍA:
-${garantia}
+❌ No cambiar correo ni contraseña  
+❌ No modificar facturación  
+⚠️ Máximo 5 dispositivos por cuenta  
+
+🌸 GARANTÍA 🌸  
+💖 ${garantia} 💖
 
 🚩 REPORTES:
-https://forms.gle/Y7sHyL7Gouchfwuc8`;
+https://forms.gle/Y7sHyL7Gouchfwuc8
+
+> 🐇🌜 Gracias por tu compra 🌛🐇`;
 
 return;
 }
 
+
 // 🟢 PERFILES
-salida.textContent=`> ✨ LUNALI STREAMING ✨
+salida.textContent=`> *☾✨ LUNALI STREAMING ✨☽*
 
-🐇 ${plataformas[p]} • ${fecha}
+🐇🌜*${plataformas[p]}*🌛🐇 • ${fecha}
 
-Correo: ${correo.value}
-Contraseña: ${contrasena.value}
-Perfil: ${perfil}
+💌 Correo 💌: ${correo.value}
+🔐 Contraseña 🔐: ${contrasena.value}
+👤 Perfil 👤: ${perfil}
 
-⚠️ REGLAS:
-❌ No cambiar datos
-❌ No modificar facturación
-⚠️ 1 dispositivo por perfil
+> 🫧 Reglas de Garantía 🫧
 
-⏳ Confirmar en 10 minutos
-📸 Enviar comprobante
+⏳ *CONFIRMA TU ACCESO*
+En máximo 10 minutos  
+📸 Envía comprobante
 
-💖 GARANTÍA:
-${garantia}
+❌ No cambiar correo ni contraseña  
+❌ No modificar facturación  
+⚠️ Máximo 1 dispositivo por perfil  
+
+🌸 GARANTÍA 🌸  
+💖 ${garantia} 💖
 
 🚩 REPORTES:
-https://forms.gle/Y7sHyL7Gouchfwuc8`;
+https://forms.gle/Y7sHyL7Gouchfwuc8
+
+> 🐇🌜 Gracias por tu compra 🌛🐇`;
 }
 
 document.querySelectorAll("input").forEach(i=>i.oninput=()=>{
