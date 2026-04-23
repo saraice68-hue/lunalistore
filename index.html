@@ -50,6 +50,7 @@ En "Tipo", escribe <b>c</b> para COMPLETA.
 <div id="perfilBtns"></div>
 <div id="salida"></div>
 <button id="copiarBtn">📋 Copiar todo</button>
+
 </div>
 
 <script>
@@ -74,31 +75,37 @@ let perfil="P1";
 
 function crearPerfiles(){
 perfilBtns.innerHTML="";
-const p=plataforma.value.toLowerCase();
+const p=plataforma.value.trim().toLowerCase();
 
-if(tipo.value.toLowerCase()==="c"){
+if(tipo.value.trim().toLowerCase()==="c"){
 perfil="COMPLETA";
 perfilBtns.style.display="none";
 return;
 }
 
 perfilBtns.style.display="flex";
+
 for(let i=1;i<=5;i++){
 const b=document.createElement("button");
 b.textContent="P"+i;
+
 if(i===1){b.classList.add("active");perfil="P1"}
+
 b.onclick=()=>{
 document.querySelectorAll("#perfilBtns button").forEach(x=>x.classList.remove("active"));
 b.classList.add("active");
 perfil=b.textContent;
 generar();
 }
+
 perfilBtns.appendChild(b);
 }
 }
 
 function generar(){
-const p=plataforma.value.toLowerCase();
+
+const p=plataforma.value.trim().toLowerCase();
+
 if(!plataformas[p]||!correo.value||!contrasena.value){
 salida.textContent="";
 return;
@@ -116,4 +123,32 @@ salida.textContent=`╔═🌙 ࣪ ִֶָ☾ 𝓛𝓾𝓷𝓪𝓵𝓲 𝓢𝓽�
 ✨ ${plataformas[p]} • ${fechaTxt} ✨
 💌 Correo 💌: ${correo.value}
 🔐 Contraseña 🔐: ${contrasena.value}
-👤
+👤 Perfil 👤: ${perfil}
+
+╠══🫧 𝓡𝓮𝓰𝓵𝓪𝓼 𝓭𝓮 𝓖𝓪𝓻𝓪𝓷𝓽í𝓪 🫧══╣
+⚠️ REPORTAR SIN VERIFICAR ANULA GARANTÍA ⚠️
+⏳ CONFIRMA TU ACCESO EN 10 MINUTOS
+🌸 ${garantia}
+💖 NO CAMBIAR DATOS NI FACTURACIÓN
+
+🚩 REPORTES:
+https://forms.gle/Y7sHyL7Gouchfwuc8
+
+╚═🐾 GRACIAS POR TU COMPRA 🐾══╝`;
+}
+
+document.querySelectorAll("input").forEach(i=>i.oninput=()=>{
+crearPerfiles();
+generar();
+});
+
+copiarBtn.onclick=()=>{
+navigator.clipboard.writeText(salida.textContent);
+};
+
+crearPerfiles();
+
+</script>
+
+</body>
+</html>
