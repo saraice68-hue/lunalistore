@@ -60,31 +60,92 @@ let perfil="P1";
 function crearPerfiles(){
 perfilBtns.innerHTML="";
 const p=plataforma.value.toLowerCase();
-if(tipo.value.toLowerCase()==="c"){perfil="COMPLETA";perfilBtns.style.display="none";return}
-if(p==="yf"){perfil="FAMILIAR";perfilBtns.style.display="none";return}
+
+if(tipo.value.toLowerCase()==="c"){
+perfil="COMPLETA";
+perfilBtns.style.display="none";
+return;
+}
+
+if(p==="yf"){
+perfil="FAMILIAR";
+perfilBtns.style.display="none";
+return;
+}
+
 perfilBtns.style.display="flex";
+
 let total=5;
 if(p==="d"||p==="c")total=7;
 else if(p==="pr"||p==="p")total=6;
+
 for(let i=1;i<=total;i++){
 const b=document.createElement("button");
 b.textContent="P"+i;
 if(i===1){b.classList.add("active");perfil="P1"}
-b.onclick=()=>{document.querySelectorAll("#perfilBtns button").forEach(x=>x.classList.remove("active"));b.classList.add("active");perfil=b.textContent;generar()}
-perfilBtns.appendChild(b)
+b.onclick=()=>{
+document.querySelectorAll("#perfilBtns button").forEach(x=>x.classList.remove("active"));
+b.classList.add("active");
+perfil=b.textContent;
+generar();
+}
+perfilBtns.appendChild(b);
 }
 }
 
 function generar(){
 const p=plataforma.value.toLowerCase();
-if(!plataformas[p]||!correo.value||!contrasena.value){salida.textContent="";return}
+if(!plataformas[p]||!correo.value||!contrasena.value){
+salida.textContent="";
+return;
+}
 
 const f=new Date();
 const meses=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
 const fechaTxt=`${f.getDate()} ${meses[f.getMonth()]} ${f.getFullYear()}`;
 
-salida.textContent=`☾✨ 𝕃𝕌ℕ𝔸𝕃𝕀 𝕊𝕋ℝ𝔼𝔸𝕄𝕀ℕ𝔾 ✨☽
-🐇🌜${plataformas[p]}🌛🐇 • ${fechaTxt}
+// 🔴 COMPLETA
+if(tipo.value.toLowerCase()==="c"){
+salida.textContent=`> *☾✨ 𝕃𝕌ℕ𝔸𝕃𝕀 𝕊𝕋ℝ𝔼𝔸𝕄𝕀ℕ𝔾 ✨☽*
+
+🐇🌜*${plataformas[p]}*🌛🐇 • ${fechaTxt}
+
+💌 Correo 💌: ${correo.value}
+🔐 Contraseña 🔐: ${contrasena.value}
+👤 Perfil 👤: COMPLETA
+
+> 🫧 𝓡𝓮𝓰𝓵𝓪𝓼 𝓭𝓮 𝓖𝓪𝓻𝓪𝓷𝓽í𝓪 🫧
+
+⏳ ✧･ﾟ: *CONFIRMA TU ACCESO* :･ﾟ✧ ⏳
+En un máximo de *10 minutos*  
+📸 *Envía una foto* como comprobante de ingreso para *validar tu garantía.*
+Si no confirmas dentro de este tiempo, *LA GARANTÍA NO APLICARÁ.*
+
+╠══🔒 𝓡𝓮𝓰𝓵𝓪𝓼 𝓘𝓶𝓹𝓸𝓻𝓽𝓪𝓷𝓽𝓮𝓼 🔒══╣
+
+❌ No cambiar correo ni contraseña  
+❌ No ingresar ni modificar el apartado de facturación  
+⚠️ Máximo 5 dispositivos por cuenta  
+
+╠══✅ 𝓡𝓮𝓬𝓸𝓶𝓮𝓷𝓭𝓪𝓬𝓲𝓸𝓷𝓮𝓼 ✅══╣
+
+🔑 Verifica correctamente tus datos (correo y contraseña) al iniciar sesión  
+⚠️ *Evita realizar cambios innecesarios para no tener problemas de acceso* ⚠️
+
+🌸 ✧･ﾟ: *GARANTÍA* :･ﾟ✧ 🌸  
+💖 25 días a partir de la entrega 💖
+
+🚩 REPORTES:
+https://forms.gle/Y7sHyL7Gouchfwuc8
+
+> 🐇🌜 𝓖𝓻𝓪𝓬𝓲𝓪𝓼 𝓹𝓸𝓻 𝓽𝓾 𝓬𝓸𝓶𝓹𝓻𝓪 🌛🐇`;
+return;
+}
+
+// 🟢 PERFILES
+salida.textContent=`> *☾✨ 𝕃𝕌ℕ𝔸𝕃𝕀 𝕊𝕋ℝ𝔼𝔸𝕄𝕀ℕ𝔾 ✨☽*
+
+🐇🌜*${plataformas[p]}*🌛🐇 • ${fechaTxt}
 
 💌 Correo 💌: ${correo.value}
 🔐 Contraseña 🔐: ${contrasena.value}
@@ -92,24 +153,35 @@ salida.textContent=`☾✨ 𝕃𝕌ℕ𝔸𝕃𝕀 𝕊𝕋ℝ𝔼𝔸𝕄𝕀�
 
 > 🫧 𝓡𝓮𝓰𝓵𝓪𝓼 𝓭𝓮 𝓖𝓪𝓻𝓪𝓷𝓽í𝓪 🫧
 
-⚠️ *Reportar sin verificar* o reportar una cuenta que sí funciona *anula la garantía.* ⚠️
-⏳ Confirma tu acceso en un máximo de *10 minutos*, después de ese tiempo *entrará a reporte.* ⏳
-🌸 *25 días de garantía a partir la entrega* 🌸
-💖 *No cambiar contraseña, nombre, correo, datos del perfil ni ingresar o modificar el apartado de facturación sin permiso.* 💖
+⏳ ✧･ﾟ: *CONFIRMA TU ACCESO* :･ﾟ✧ ⏳
+En un máximo de *10 minutos*  
+📸 *Envía una foto* como comprobante de ingreso para *validar tu garantía.*
+Si no confirmas dentro de este tiempo, *LA GARANTÍA NO APLICARÁ.*
 
-🍒 DUDAS:
-https://chat.whatsapp.com/If3EWP838ybKNueDO2Fy5e?mode=gi_t
+╠══🔒 𝓡𝓮𝓰𝓵𝓪𝓼 𝓘𝓶𝓹𝓸𝓻𝓽𝓪𝓷𝓽𝓮𝓼 🔒══╣
 
-🌜 CÓDIGOS:
-https://chat.whatsapp.com/LaA7Zdc5w3k4TrKxngrYrk?mode=gi_t
+❌ No cambiar correo ni contraseña  
+❌ No ingresar ni modificar el apartado de facturación  
+⚠️ Máximo 1 dispositivo por *Perfil*
+
+╠══✅ 𝓡𝓮𝓬𝓸𝓶𝓮𝓷𝓭𝓪𝓬𝓲𝓸𝓷𝓮𝓼 ✅══╣
+
+🔑 Verifica correctamente tus datos (correo y contraseña) al iniciar sesión  
+⚠️ *Evita realizar cambios innecesarios para no tener problemas de acceso* ⚠️
+
+🌸 ✧･ﾟ: *GARANTÍA* :･ﾟ✧ 🌸  
+💖 25 días a partir de la entrega 💖
 
 🚩 REPORTES:
 https://forms.gle/Y7sHyL7Gouchfwuc8
 
-🐇🌜 𝓖𝓻𝓪𝓬𝓲𝓪𝓼 𝓹𝓸𝓻 𝓽𝓾 𝓬𝓸𝓶𝓹𝓻𝓪 🌛🐇`;
+> 🐇🌜 𝓖𝓻𝓪𝓬𝓲𝓪𝓼 𝓹𝓸𝓻 𝓽𝓾 𝓬𝓸𝓶𝓹𝓻𝓪 🌛🐇`;
 }
 
-document.querySelectorAll("input").forEach(i=>i.oninput=()=>{crearPerfiles();generar()});
+document.querySelectorAll("input").forEach(i=>i.oninput=()=>{
+crearPerfiles();
+generar();
+});
 
 copiarBtn.onclick=()=>{
 if(!salida.textContent)return;
@@ -117,8 +189,11 @@ copiarBtn.textContent="Copiando...";
 copiarBtn.disabled=true;
 navigator.clipboard.writeText(salida.textContent).then(()=>{
 copiarBtn.textContent="Texto copiado ✓";
-setTimeout(()=>{copiarBtn.textContent="📋 Copiar todo";copiarBtn.disabled=false},2000)
-})
+setTimeout(()=>{
+copiarBtn.textContent="📋 Copiar todo";
+copiarBtn.disabled=false;
+},2000);
+});
 };
 
 crearPerfiles();
