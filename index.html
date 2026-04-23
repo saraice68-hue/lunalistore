@@ -3,43 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>☾ Lunalí Store Streaming ☾</title>
+<title>Lunalí Streaming</title>
+
 <style>
-body{margin:0;font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#ff9acb,#ff4fa3);display:flex;justify-content:center;padding:20px}
-.container{width:100%;max-width:520px;background:#fff0f6;border-radius:25px;padding:25px 15px;box-shadow:0 15px 35px rgba(0,0,0,0.25);display:flex;flex-direction:column;align-items:center}
-h1{text-align:center;color:#c2185b;margin-bottom:15px;font-size:1.6rem}
-.guia{width:90%;background:#ffd6eb;padding:15px;border-radius:18px;margin-bottom:15px;color:#880e4f;font-size:0.95rem}
-input{display:block;width:90%;max-width:420px;margin:10px auto;padding:14px;border-radius:16px;border:2px solid #ff80b5;font-size:1rem;box-sizing:border-box}
-#perfilBtns{width:90%;display:flex;justify-content:center;gap:10px;margin:15px 0;flex-wrap:wrap}
-#perfilBtns button{padding:8px 16px;border:none;border-radius:20px;background:#f8bbd0;color:#880e4f;font-weight:bold;cursor:pointer}
-#perfilBtns button.active{background:#c2185b;color:white}
-#salida{width:90%;background:#ffffff;padding:15px;border-radius:18px;min-height:220px;white-space:pre-wrap;font-family:monospace;color:#880e4f;border:2px dashed #ff80b5}
-#copiarBtn{width:90%;margin-top:18px;padding:14px;background:#c2185b;color:white;border:none;border-radius:30px;font-size:1rem;cursor:pointer}
-#copiarBtn:disabled{opacity:0.8}
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#ff9acb,#ff4fa3);
+display:flex;
+justify-content:center;
+padding:20px
+}
+.container{
+width:100%;
+max-width:520px;
+background:#fff0f6;
+border-radius:25px;
+padding:25px 15px;
+box-shadow:0 15px 35px rgba(0,0,0,0.25);
+display:flex;
+flex-direction:column;
+align-items:center
+}
+input{
+display:block;
+width:90%;
+margin:10px auto;
+padding:14px;
+border-radius:16px;
+border:2px solid #ff80b5;
+font-size:1rem
+}
+#perfilBtns{
+display:flex;
+gap:10px;
+margin:15px 0
+}
+#perfilBtns button{
+padding:8px 16px;
+border:none;
+border-radius:20px;
+background:#f8bbd0;
+cursor:pointer
+}
+#perfilBtns button.active{
+background:#c2185b;
+color:white
+}
+#salida{
+width:90%;
+background:#fff;
+padding:15px;
+border-radius:18px;
+white-space:pre-wrap;
+font-family:monospace;
+border:2px dashed #ff80b5
+}
 </style>
+
 </head>
 <body>
 
 <div class="container">
-<h1>☾✨ 𝕃𝕌ℕ𝔸𝕃𝕀 𝕊𝕋ℝ𝔼𝔸𝕄𝕀ℕ𝔾 ✨☽</h1>
-
-<div class="guia">
-<b>Guía:</b><br>
-n: Netflix<br>
-m: Max<br>
-p: Prime Video<br>
-pr: Paramount+<br>
-v: Vix<br>
-va: Vix Anual<br>
-d: Disney+<br>
-c: ChatGPT<br>
-cr: Crunchyroll<br>
-s: Spotify<br>
-s3: Spotify 3 meses<br>
-yf: YouTube Familiar<br>
-fx: Fox One<br>
-En "Tipo", escribe <b>c</b> para COMPLETA.
-</div>
 
 <input id="plataforma" placeholder="Plataforma">
 <input id="correo" placeholder="Correo">
@@ -48,10 +73,11 @@ En "Tipo", escribe <b>c</b> para COMPLETA.
 
 <div id="perfilBtns"></div>
 <div id="salida"></div>
-<button id="copiarBtn">📋 Copiar todo</button>
+
 </div>
 
 <script>
+
 const plataformas={
 n:"NETFLIX",
 m:"MAX",
@@ -80,33 +106,27 @@ perfilBtns.style.display="none";
 return;
 }
 
-if(p==="yf"){
-perfil="FAMILIAR";
-perfilBtns.style.display="none";
-return;
-}
-
 perfilBtns.style.display="flex";
 
-let total=5;
-if(p==="d"||p==="c")total=7;
-else if(p==="pr"||p==="p")total=6;
-
-for(let i=1;i<=total;i++){
+for(let i=1;i<=5;i++){
 const b=document.createElement("button");
 b.textContent="P"+i;
+
 if(i===1){b.classList.add("active");perfil="P1"}
+
 b.onclick=()=>{
 document.querySelectorAll("#perfilBtns button").forEach(x=>x.classList.remove("active"));
 b.classList.add("active");
 perfil=b.textContent;
 generar();
 }
+
 perfilBtns.appendChild(b);
 }
 }
 
 function generar(){
+
 const p=plataforma.value.toLowerCase();
 if(!plataformas[p]||!correo.value||!contrasena.value){
 salida.textContent="";
@@ -115,67 +135,61 @@ return;
 
 const f=new Date();
 const meses=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
-const fechaTxt=`${f.getDate()} ${meses[f.getMonth()]} ${f.getFullYear()}`;
+const fecha=`${f.getDate()} ${meses[f.getMonth()]} ${f.getFullYear()}`;
 
-// 🔥 GARANTÍA AUTOMÁTICA
-let garantia="25 días de garantía a partir de la entrega";
-if(p==="va") garantia="6 meses de garantía a partir de la entrega";
-if(p==="s3") garantia="70 días de garantía a partir de la entrega";
+let garantia="25 días a partir de la entrega";
+if(p==="va") garantia="6 meses de garantía";
+if(p==="s3") garantia="70 días de garantía";
 
 // 🔴 COMPLETA
 if(tipo.value.toLowerCase()==="c"){
-salida.textContent=`> *☾✨ 𝕃𝕌ℕ𝔸𝕃𝕀 𝕊𝕋ℝ𝔼𝔸𝕄𝕀ℕ𝔾 ✨☽*
+salida.textContent=`> ✨ LUNALI STREAMING ✨
 
-🐇🌜*${plataformas[p]}*🌛🐇 • ${fechaTxt}
+🐇 ${plataformas[p]} • ${fecha}
 
-💌 Correo 💌: ${correo.value}
-🔐 Contraseña 🔐: ${contrasena.value}
-👤 Perfil 👤: COMPLETA
+Correo: ${correo.value}
+Contraseña: ${contrasena.value}
+Perfil: COMPLETA
 
-> 🫧 𝓡𝓮𝓰𝓵𝓪𝓼 𝓭𝓮 𝓖𝓪𝓻𝓪𝓷𝓽í𝓪 🫧
+⚠️ REGLAS:
+❌ No cambiar datos
+❌ No modificar facturación
+⚠️ Máximo 5 dispositivos por cuenta
 
-⏳ Confirma tu acceso en un máximo de 10 minutos  
-📸 Envía comprobante para validar garantía  
+⏳ Confirmar en 10 minutos
+📸 Enviar comprobante
 
-❌ No cambiar datos  
-❌ No modificar facturación  
-⚠️ Máx 5 dispositivos por cuenta  
-
-🌸 GARANTÍA 🌸  
-💖 ${garantia} 💖
+💖 GARANTÍA:
+${garantia}
 
 🚩 REPORTES:
-https://forms.gle/Y7sHyL7Gouchfwuc8
+https://forms.gle/Y7sHyL7Gouchfwuc8`;
 
-> 🐇🌜 Gracias por tu compra 🌛🐇`;
 return;
 }
 
 // 🟢 PERFILES
-salida.textContent=`> *☾✨ 𝕃𝕌ℕ𝔸𝕃𝕀 𝕊𝕋ℝ𝔼𝔸𝕄𝕀ℕ𝔾 ✨☽*
+salida.textContent=`> ✨ LUNALI STREAMING ✨
 
-🐇🌜*${plataformas[p]}*🌛🐇 • ${fechaTxt}
+🐇 ${plataformas[p]} • ${fecha}
 
-💌 Correo 💌: ${correo.value}
-🔐 Contraseña 🔐: ${contrasena.value}
-👤 Perfil 👤: ${perfil}
+Correo: ${correo.value}
+Contraseña: ${contrasena.value}
+Perfil: ${perfil}
 
-> 🫧 𝓡𝓮𝓰𝓵𝓪𝓼 🫧
+⚠️ REGLAS:
+❌ No cambiar datos
+❌ No modificar facturación
+⚠️ 1 dispositivo por perfil
 
-⏳ Confirmar acceso en 10 min  
-📸 Enviar comprobante  
+⏳ Confirmar en 10 minutos
+📸 Enviar comprobante
 
-❌ No cambiar datos  
-❌ No modificar facturación  
-⚠️ 1 dispositivo por perfil  
-
-🌸 GARANTÍA 🌸  
-💖 ${garantia} 💖
+💖 GARANTÍA:
+${garantia}
 
 🚩 REPORTES:
-https://forms.gle/Y7sHyL7Gouchfwuc8
-
-> 🐇🌜 Gracias por tu compra 🌛🐇`;
+https://forms.gle/Y7sHyL7Gouchfwuc8`;
 }
 
 document.querySelectorAll("input").forEach(i=>i.oninput=()=>{
@@ -183,20 +197,8 @@ crearPerfiles();
 generar();
 });
 
-copiarBtn.onclick=()=>{
-if(!salida.textContent)return;
-copiarBtn.textContent="Copiando...";
-copiarBtn.disabled=true;
-navigator.clipboard.writeText(salida.textContent).then(()=>{
-copiarBtn.textContent="Texto copiado ✓";
-setTimeout(()=>{
-copiarBtn.textContent="📋 Copiar todo";
-copiarBtn.disabled=false;
-},2000);
-});
-};
-
 crearPerfiles();
+
 </script>
 
 </body>
