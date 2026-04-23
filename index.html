@@ -50,7 +50,6 @@ En "Tipo", escribe <b>c</b> para COMPLETA.
 <div id="perfilBtns"></div>
 <div id="salida"></div>
 <button id="copiarBtn">📋 Copiar todo</button>
-
 </div>
 
 <script>
@@ -88,16 +87,13 @@ perfilBtns.style.display="flex";
 for(let i=1;i<=5;i++){
 const b=document.createElement("button");
 b.textContent="P"+i;
-
 if(i===1){b.classList.add("active");perfil="P1"}
-
 b.onclick=()=>{
 document.querySelectorAll("#perfilBtns button").forEach(x=>x.classList.remove("active"));
 b.classList.add("active");
 perfil=b.textContent;
 generar();
 }
-
 perfilBtns.appendChild(b);
 }
 }
@@ -119,22 +115,65 @@ const f=new Date();
 const meses=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
 const fechaTxt=`${f.getDate()} ${meses[f.getMonth()]} ${f.getFullYear()}`;
 
-salida.textContent=`╔═🌙 ࣪ ִֶָ☾ 𝓛𝓾𝓷𝓪𝓵𝓲 𝓢𝓽𝓸𝓻𝓮 𝓢𝓽𝓻𝓮𝓪𝓶𝓲𝓷𝓰 ☾ ࣪ ִֶָ🌙═╗
-✨ ${plataformas[p]} • ${fechaTxt} ✨
+
+// 🔥 TEXTO DIFERENTE
+let reglas="";
+
+if(tipo.value.trim().toLowerCase()==="c"){
+
+reglas=`
+> 🫧 𝓡𝓮𝓰𝓵𝓪𝓼 𝓭𝓮 𝓖𝓪𝓻𝓪𝓷𝓽í𝓪 🫧
+
+⏳ ✧･ﾟ: *CONFIRMA TU ACCESO* :･ﾟ✧ ⏳
+En un máximo de *10 minutos*  
+📸 *Envía una foto* para validar tu garantía  
+
+╠══🔒 𝓡𝓮𝓰𝓵𝓪𝓼 𝓘𝓶𝓹𝓸𝓻𝓽𝓪𝓷𝓽𝓮𝓼 🔒══╣
+
+❌ No cambiar correo ni contraseña  
+❌ No modificar facturación  
+⚠️ Máximo 5 dispositivos por cuenta  
+
+🌸 ✧･ﾟ: *GARANTÍA* :･ﾟ✧ 🌸  
+💖 ${garantia} 💖
+`;
+
+}else{
+
+reglas=`
+> 🫧 𝓡𝓮𝓰𝓵𝓪𝓼 𝓭𝓮 𝓖𝓪𝓻𝓪𝓷𝓽í𝓪 🫧
+
+⏳ ✧･ﾟ: *CONFIRMA TU ACCESO* :･ﾟ✧ ⏳
+En un máximo de *10 minutos*  
+📸 *Envía una foto* para validar tu garantía  
+
+╠══🔒 𝓡𝓮𝓰𝓵𝓪𝓼 𝓘𝓶𝓹𝓸𝓻𝓽𝓪𝓷𝓽𝓮𝓼 🔒══╣
+
+❌ No cambiar correo ni contraseña  
+❌ No modificar facturación  
+⚠️ Máximo 1 dispositivo por *Perfil*  
+
+🌸 ✧･ﾟ: *GARANTÍA* :･ﾟ✧ 🌸  
+💖 ${garantia} 💖
+`;
+}
+
+
+salida.textContent=`> *☾✨ LUNALI STREAMING ✨☽*
+
+🐇🌜*${plataformas[p]}*🌛🐇 • ${fechaTxt}
+
 💌 Correo 💌: ${correo.value}
 🔐 Contraseña 🔐: ${contrasena.value}
 👤 Perfil 👤: ${perfil}
 
-╠══🫧 𝓡𝓮𝓰𝓵𝓪𝓼 𝓭𝓮 𝓖𝓪𝓻𝓪𝓷𝓽í𝓪 🫧══╣
-⚠️ REPORTAR SIN VERIFICAR ANULA GARANTÍA ⚠️
-⏳ CONFIRMA TU ACCESO EN 10 MINUTOS
-🌸 ${garantia}
-💖 NO CAMBIAR DATOS NI FACTURACIÓN
+${reglas}
 
 🚩 REPORTES:
 https://forms.gle/Y7sHyL7Gouchfwuc8
 
-╚═🐾 GRACIAS POR TU COMPRA 🐾══╝`;
+> 🐇🌜 Gracias por tu compra 🌛🐇`;
+
 }
 
 document.querySelectorAll("input").forEach(i=>i.oninput=()=>{
