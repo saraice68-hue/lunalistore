@@ -125,7 +125,17 @@ perfilTexto="COMPLETA";
 let dispositivo="Máximo 1 dispositivo por *perfil*";
 
 if(tipo.value.trim().toLowerCase()==="c"){
-dispositivo="Máximo 5 dispositivos por *cuenta*";
+
+if(p==="d" || p==="c"){
+dispositivo="Máximo 7 dispositivos por *completa*";
+}
+else if(p==="pr" || p==="p"){
+dispositivo="Máximo 6 dispositivos por *completa*";
+}
+else{
+dispositivo="Máximo 5 dispositivos por *completa*";
+}
+
 }
 
 let garantia="25 días de garantía";
