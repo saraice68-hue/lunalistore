@@ -35,8 +35,9 @@ va: Vix Anual<br>
 d: Disney+<br>
 c: ChatGPT<br>
 cr: Crunchyroll<br>
-s: Spotify<br>
-s3: Spotify 3 meses<br>
+s: Spotify Individual<br>
+s3: Spotify 3 meses Individual<br>
+sf: Spotify Familiar<br>
 yf: YouTube Familiar<br>
 fx: Fox One<br>
 En "Tipo", escribe <b>c</b> para COMPLETA.
@@ -68,6 +69,7 @@ c:"CHATGPT",
 cr:"CRUNCHYROLL",
 s:"SPOTIFY",
 s3:"SPOTIFY 3 MESES",
+sf:"SPOTIFY FAMILIAR",
 yf:"YOUTUBE FAMILIAR",
 fx:"FOX ONE"
 };
@@ -76,6 +78,14 @@ let perfil="P1";
 
 function crearPerfiles(){
 perfilBtns.innerHTML="";
+
+const p=plataforma.value.trim().toLowerCase();
+
+if(p==="s" || p==="s3"){
+perfil="INDIVIDUAL";
+perfilBtns.style.display="none";
+return;
+}
 
 if(tipo.value.trim().toLowerCase()==="c"){
 perfil="COMPLETA";
@@ -116,15 +126,22 @@ const f=new Date();
 const meses=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 const fechaTxt=`${String(f.getDate()).padStart(2,"0")} ${meses[f.getMonth()]} ${f.getFullYear()}`;
 
-let perfilTexto=perfil.replace("P","");
+let lineaPerfil=`🌸 PERFIL: ${perfil.replace("P","")}`;
 
 if(tipo.value.trim().toLowerCase()==="c"){
-perfilTexto="COMPLETA";
+lineaPerfil="🌸 COMPLETA";
+}
+
+if(p==="s" || p==="s3"){
+lineaPerfil="🌸 INDIVIDUAL";
 }
 
 let dispositivo="Máximo 1 dispositivo por *perfil*";
 
-if(tipo.value.trim().toLowerCase()==="c"){
+if(p==="s" || p==="s3"){
+dispositivo="Máximo 1 dispositivo";
+}
+else if(tipo.value.trim().toLowerCase()==="c"){
 
 if(p==="d" || p==="c"){
 dispositivo="Máximo 7 dispositivos por *completa*";
@@ -153,7 +170,7 @@ salida.textContent=`꧁🌸 LUNALI 🌸꧂
 ❤️ ${plataformas[p]} ❤️
 💌 ${correo.value}
 🔐 ${contrasena.value}
-🌸 PERFIL: ${perfilTexto}
+${lineaPerfil}
 📤 Entrega: ${fechaTxt}
 · · ─ ·𖥸· ─ ·  • ·· · ─ ·𖥸· ─ · ·
 🌸Códigos🌸
