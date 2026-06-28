@@ -3,26 +3,118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>☾ Lunalí Store Streaming ☾</title>
+<title>🐰💜 LUNALI STREAM 💜🐰</title>
 
 <style>
-body{margin:0;font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#ff9acb,#ff4fa3);display:flex;justify-content:center;padding:20px}
-.container{width:100%;max-width:520px;background:#fff0f6;border-radius:25px;padding:25px 15px;box-shadow:0 15px 35px rgba(0,0,0,0.25);display:flex;flex-direction:column;align-items:center}
-h1{text-align:center;color:#c2185b;margin-bottom:15px;font-size:1.6rem}
-.guia{width:90%;background:#ffd6eb;padding:15px;border-radius:18px;margin-bottom:15px;color:#880e4f;font-size:0.95rem}
-input{display:block;width:90%;max-width:420px;margin:10px auto;padding:14px;border-radius:16px;border:2px solid #ff80b5;font-size:1rem;box-sizing:border-box}
-#perfilBtns{width:90%;display:flex;justify-content:center;gap:10px;margin:15px 0;flex-wrap:wrap}
-#perfilBtns button{padding:8px 16px;border:none;border-radius:20px;background:#f8bbd0;color:#880e4f;font-weight:bold;cursor:pointer}
-#perfilBtns button.active{background:#c2185b;color:white}
-#salida{width:90%;background:#ffffff;padding:15px;border-radius:18px;min-height:220px;white-space:pre-wrap;font-family:monospace;color:#880e4f;border:2px dashed #ff80b5}
-#copiarBtn{width:90%;margin-top:18px;padding:14px;background:#c2185b;color:white;border:none;border-radius:30px;font-size:1rem;cursor:pointer}
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#3b0764,#7e22ce,#d8b4fe);
+    display:flex;
+    justify-content:center;
+    padding:20px;
+}
+.container{
+    width:100%;
+    max-width:520px;
+    background:#f5e8ff;
+    border-radius:25px;
+    padding:25px 15px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.30);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+h1{
+    background:linear-gradient(90deg,#4c1d95,#8b5cf6,#c084fc);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    font-size:1.9rem;
+    font-weight:900;
+    text-align:center;
+    margin-bottom:15px;
+}
+.guia{
+    width:90%;
+    background:#ead5ff;
+    padding:15px;
+    border-radius:18px;
+    margin-bottom:15px;
+    color:#4c1d95;
+    font-size:0.95rem;
+}
+input{
+    display:block;
+    width:90%;
+    max-width:420px;
+    margin:10px auto;
+    padding:14px;
+    border-radius:16px;
+    border:2px solid #a855f7;
+    font-size:1rem;
+    box-sizing:border-box;
+}
+#perfilBtns,#adminBtns{
+    width:90%;
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:15px 0;
+    flex-wrap:wrap;
+}
+#perfilBtns button,#adminBtns button{
+    padding:8px 16px;
+    border:none;
+    border-radius:20px;
+    background:#ddd6fe;
+    color:#4c1d95;
+    font-weight:bold;
+    cursor:pointer;
+}
+#perfilBtns button.active,#adminBtns button.active{
+    background:#7e22ce;
+    color:white;
+}
+#salida{
+    width:90%;
+    background:#ffffff;
+    padding:15px;
+    border-radius:18px;
+    min-height:220px;
+    white-space:pre-wrap;
+    font-family:monospace;
+    color:#4c1d95;
+    border:2px dashed #a855f7;
+}
+#copiarBtn,#limpiarBtn{
+    width:90%;
+    margin-top:18px;
+    padding:14px;
+    background:#7e22ce;
+    color:white;
+    border:none;
+    border-radius:30px;
+    font-size:1rem;
+    cursor:pointer;
+}
+#limpiarBtn{
+    background:#a855f7;
+    margin-top:10px;
+}
+.subtitulo{
+    width:90%;
+    color:#4c1d95;
+    font-weight:bold;
+    margin-top:10px;
+    text-align:center;
+}
 </style>
 </head>
 
 <body>
 <div class="container">
 
-<h1>࣪ ִֶָ☾. 𝑳𝒖𝒏𝒂𝒍𝒊 𝑺𝒕𝓸𝓻𝓮 𝓢𝓽𝓻𝓮𝓪𝓶𝓲𝓷𝓰 ࣪ ִֶָ☾.</h1>
+<h1>🐰💜 LUNALI STREAM 💜🐰</h1>
 
 <div class="guia">
 <b>Guía:</b><br>
@@ -40,8 +132,14 @@ s3: Spotify 3 meses Individual<br>
 sf: Spotify Familiar<br>
 yf: YouTube Familiar<br>
 fx: Fox One<br>
+i: IPTV<br>
+f: Flujo TV<br>
+a2: Apple TV 2 meses<br><br>
 En "Tipo", escribe <b>c</b> para COMPLETA.
 </div>
+
+<div class="subtitulo">Administrador en turno</div>
+<div id="adminBtns"></div>
 
 <input id="plataforma" placeholder="Plataforma / abreviatura">
 <input id="correo" placeholder="Correo">
@@ -53,6 +151,7 @@ En "Tipo", escribe <b>c</b> para COMPLETA.
 <div id="salida"></div>
 
 <button id="copiarBtn">📋 Copiar todo</button>
+<button id="limpiarBtn">🧹 Limpiar formulario</button>
 
 </div>
 
@@ -71,10 +170,54 @@ s:"SPOTIFY",
 s3:"SPOTIFY 3 MESES",
 sf:"SPOTIFY FAMILIAR",
 yf:"YOUTUBE FAMILIAR",
-fx:"FOX ONE"
+fx:"FOX ONE",
+i:"IPTV",
+f:"FLUJO TV",
+a2:"APPLE TV 2 MESES"
+};
+
+const administradores={
+"Sarita":"+52 444 704 3917",
+"Gaby":"+52 773 342 8005",
+"Ninguno":"+503 7855 5979",
+"Nayely":"+52 273 128 9428",
+"Nami":"+52 961 869 3829"
 };
 
 let perfil="P1";
+let adminNombre=localStorage.getItem("adminNombre") || "Sarita";
+let adminTelefono=administradores[adminNombre] || administradores["Sarita"];
+
+function crearAdmins(){
+adminBtns.innerHTML="";
+
+Object.keys(administradores).forEach(nombre=>{
+const b=document.createElement("button");
+b.textContent=nombre;
+
+if(nombre===adminNombre){
+b.classList.add("active");
+}
+
+b.onclick=()=>{
+document.querySelectorAll("#adminBtns button").forEach(x=>x.classList.remove("active"));
+b.classList.add("active");
+adminNombre=nombre;
+adminTelefono=administradores[nombre];
+localStorage.setItem("adminNombre",nombre);
+generar();
+};
+
+adminBtns.appendChild(b);
+});
+}
+
+function cantidadPerfiles(p){
+if(p==="i" || p==="f") return 3;
+if(p==="d" || p==="c") return 7;
+if(p==="p" || p==="pr") return 6;
+return 5;
+}
 
 function crearPerfiles(){
 perfilBtns.innerHTML="";
@@ -95,7 +238,18 @@ return;
 
 perfilBtns.style.display="flex";
 
-for(let i=1;i<=5;i++){
+const total=cantidadPerfiles(p);
+
+if(perfil==="COMPLETA" || perfil==="INDIVIDUAL"){
+perfil="P1";
+}
+
+const perfilNum=parseInt(perfil.replace("P",""));
+if(perfilNum>total || isNaN(perfilNum)){
+perfil="P1";
+}
+
+for(let i=1;i<=total;i++){
 const b=document.createElement("button");
 b.textContent="P"+i;
 
@@ -149,8 +303,24 @@ dispositivo="Máximo 7 dispositivos por *completa*";
 else if(p==="pr" || p==="p"){
 dispositivo="Máximo 6 dispositivos por *completa*";
 }
+else if(p==="i" || p==="f"){
+dispositivo="Máximo 3 dispositivos simultáneos por *completa*";
+}
+else if(p==="a2"){
+dispositivo="Máximo 5 dispositivos por *completa*";
+}
 else{
 dispositivo="Máximo 5 dispositivos por *completa*";
+}
+
+}
+else{
+
+if(p==="i" || p==="f"){
+dispositivo="Máximo 3 dispositivos simultáneos por *perfil*";
+}
+else{
+dispositivo="Máximo 1 dispositivo por *perfil*";
 }
 
 }
@@ -165,16 +335,19 @@ if(p==="s3"){
 garantia="70 días de garantía";
 }
 
-salida.textContent=`꧁🌸 LUNALI 🌸꧂
+salida.textContent=`꧁🐰💜 LUNALI STREAM 💜🐰꧂
 · · ─ ·𖥸· ─ ·  • ·· · ─ ·𖥸· ─ · ·
-❤️ ${plataformas[p]} ❤️
+💜 ${plataformas[p]} 💜
 💌 ${correo.value}
 🔐 ${contrasena.value}
 ${lineaPerfil}
 📤 Entrega: ${fechaTxt}
 · · ─ ·𖥸· ─ ·  • ·· · ─ ·𖥸· ─ · ·
 🌸Códigos🌸
-https://chat.whatsapp.com/LaA7Zdc5w3k4TrKxngrYrk?mode=gi_t
+https://chat.whatsapp.com/KZEJfWL6votEMAC6E1nF8k?s=cl&p=a&mlu=2
+· · ─ ·𖥸· ─ ·  • ·· · ─ ·𖥸· ─ · ·
+🌸Grupo de respaldo🌸
+https://chat.whatsapp.com/GZwgwRWaGWkEPfJD7QDJ3T?s=cl&p=a&mlu=2
 · · ─ ·𖥸· ─ ·  • ·· · ─ ·𖥸· ─ · ·
 🌸REPORTES🌸
 https://forms.gle/Y7sHyL7Gouchfwuc8
@@ -189,6 +362,9 @@ https://forms.gle/Y7sHyL7Gouchfwuc8
 · · ─ ·𖥸· ─ ·  • ·· · ─ ·𖥸· ─ · ·
 🌸 DUDAS 🌸
 *Con el admin en turno* por privado no al grupo.
+
+📦 Entregó: *${adminNombre}*
+📱 ${adminTelefono}
 · · ─ ·𖥸· ─ ·  • ·· · ─ ·𖥸· ─ · ·`;
 }
 
@@ -205,6 +381,17 @@ copiarBtn.textContent="✅ Copiado";
 setTimeout(()=>copiarBtn.textContent="📋 Copiar todo",1500);
 };
 
+limpiarBtn.onclick=()=>{
+plataforma.value="";
+correo.value="";
+contrasena.value="";
+tipo.value="";
+perfil="P1";
+salida.textContent="";
+crearPerfiles();
+};
+
+crearAdmins();
 crearPerfiles();
 </script>
 
