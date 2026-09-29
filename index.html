@@ -2,150 +2,2161 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>🐰💜 LUNALI STREAM 💜🐰</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🐰🔮 LUNALI STREAM 🔮🐰</title>
 
 <style>
-body{
-    margin:0;
-    font-family:'Segoe UI',sans-serif;
-    background:linear-gradient(135deg,#3b0764,#7e22ce,#d8b4fe);
-    display:flex;
-    justify-content:center;
-    padding:20px;
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+    --fondo-1:#120626;
+    --fondo-2:#2b0a4d;
+    --fondo-3:#4d176f;
+
+    --morado:#8b5cf6;
+    --morado-fuerte:#6d28d9;
+    --violeta:#a855f7;
+
+    --rosa:#f0abfc;
+    --rosa-claro:#fce7f3;
+
+    --azul:#60a5fa;
+    --azul-claro:#bae6fd;
+
+    --blanco:#fffaff;
+    --texto:#45205f;
+
+    --borde:rgba(255,255,255,.22);
+
+    --sombra:
+        0 18px 55px
+        rgba(15,2,35,.48);
 }
-.container{
-    width:100%;
-    max-width:520px;
-    background:#f5e8ff;
-    border-radius:25px;
-    padding:25px 15px;
-    box-shadow:0 15px 35px rgba(0,0,0,0.30);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-h1{
-    background:linear-gradient(90deg,#4c1d95,#8b5cf6,#c084fc);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    font-size:1.9rem;
-    font-weight:900;
-    text-align:center;
-    margin-bottom:15px;
-}
-.guia{
-    width:90%;
-    background:#ead5ff;
-    padding:15px;
-    border-radius:18px;
-    margin-bottom:15px;
-    color:#4c1d95;
-    font-size:0.95rem;
-}
-input{
-    display:block;
-    width:90%;
-    max-width:420px;
-    margin:10px auto;
-    padding:14px;
-    border-radius:16px;
-    border:2px solid #a855f7;
-    font-size:1rem;
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+*{
     box-sizing:border-box;
 }
-#perfilBtns,#adminBtns{
-    width:90%;
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    margin:15px 0;
-    flex-wrap:wrap;
+
+html{
+    scroll-behavior:smooth;
 }
-#perfilBtns button,#adminBtns button{
-    padding:8px 16px;
-    border:none;
-    border-radius:20px;
-    background:#ddd6fe;
-    color:#4c1d95;
-    font-weight:bold;
-    cursor:pointer;
-}
-#perfilBtns button.active,#adminBtns button.active{
-    background:#7e22ce;
+
+body{
+    margin:0;
+    min-height:100vh;
+
+    font-family:
+        'Segoe UI',
+        Arial,
+        sans-serif;
+
     color:white;
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(240,171,252,.25),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(96,165,250,.25),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(139,92,246,.30),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            var(--fondo-1),
+            var(--fondo-2),
+            var(--fondo-3)
+        );
+
+    padding:28px 12px 60px;
+
+    overflow-x:hidden;
 }
-#salida{
-    width:90%;
-    background:#ffffff;
-    padding:15px;
-    border-radius:18px;
-    min-height:220px;
-    white-space:pre-wrap;
-    font-family:monospace;
-    color:#4c1d95;
-    border:2px dashed #a855f7;
-}
-#copiarBtn,#limpiarBtn{
-    width:90%;
-    margin-top:18px;
-    padding:14px;
-    background:#7e22ce;
-    color:white;
-    border:none;
-    border-radius:30px;
-    font-size:1rem;
-    cursor:pointer;
-}
-#limpiarBtn{
-    background:#a855f7;
-    margin-top:10px;
-}
-.subtitulo{
-    width:90%;
-    color:#4c1d95;
-    font-weight:bold;
-    margin-top:10px;
+
+
+/* =========================================================
+   DECORACION DE FONDO
+========================================================= */
+
+body::before{
+    content:"✦  ☾  ✧  🕸  ✦  ☾  ✧  🕸  ✦  ☾";
+    position:fixed;
+
+    top:10px;
+    left:0;
+
+    width:100%;
+
     text-align:center;
+
+    letter-spacing:20px;
+
+    color:rgba(255,255,255,.15);
+
+    font-size:20px;
+
+    pointer-events:none;
 }
+
+
+body::after{
+    content:"✧  ✦  ☾  ✦  ✧  🕯  ✦  ☾  ✧";
+    position:fixed;
+
+    bottom:10px;
+    left:0;
+
+    width:100%;
+
+    text-align:center;
+
+    letter-spacing:18px;
+
+    color:rgba(240,171,252,.13);
+
+    font-size:18px;
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   TARJETA PRINCIPAL
+========================================================= */
+
+.container{
+
+    position:relative;
+
+    width:100%;
+    max-width:620px;
+
+    margin:auto;
+
+    padding:28px 20px 24px;
+
+    border-radius:32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.94),
+            rgba(250,245,255,.92)
+        );
+
+    color:var(--texto);
+
+    border:
+        1px solid rgba(255,255,255,.55);
+
+    box-shadow:var(--sombra);
+
+    backdrop-filter:blur(18px);
+
+    overflow:hidden;
+}
+
+
+/* brillo superior */
+
+.container::before{
+    content:"";
+    position:absolute;
+
+    top:-70px;
+    left:-60px;
+
+    width:210px;
+    height:210px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(240,171,252,.45),
+            transparent 68%
+        );
+
+    pointer-events:none;
+}
+
+
+/* brillo inferior */
+
+.container::after{
+    content:"";
+    position:absolute;
+
+    right:-90px;
+    bottom:-90px;
+
+    width:260px;
+    height:260px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(96,165,250,.28),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   ENCABEZADO
+========================================================= */
+
+.header{
+    position:relative;
+    text-align:center;
+
+    margin-bottom:22px;
+
+    z-index:2;
+}
+
+
+.moon{
+    font-size:2.5rem;
+
+    margin-bottom:4px;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(168,85,247,.55)
+        );
+}
+
+
+h1{
+    margin:0;
+
+    font-size:2rem;
+
+    line-height:1.15;
+
+    font-weight:1000;
+
+    letter-spacing:.6px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #5b21b6,
+            #a855f7,
+            #ec4899,
+            #60a5fa
+        );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    filter:
+        drop-shadow(
+            0 2px 5px
+            rgba(109,40,217,.15)
+        );
+}
+
+
+.descripcion{
+    margin-top:8px;
+
+    font-size:.95rem;
+
+    color:#7e22ce;
+
+    font-weight:700;
+}
+
+
+.miniDecor{
+    margin-top:8px;
+
+    color:#a855f7;
+
+    letter-spacing:8px;
+}
+
+
+/* =========================================================
+   GUIA
+========================================================= */
+
+.guia{
+
+    position:relative;
+
+    z-index:2;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(245,232,255,.95),
+            rgba(224,231,255,.9)
+        );
+
+    border:
+        1px solid
+        rgba(168,85,247,.35);
+
+    border-radius:22px;
+
+    padding:17px;
+
+    line-height:1.65;
+
+    font-size:.9rem;
+
+    color:#4c1d95;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.9),
+        0 8px 18px
+        rgba(126,34,206,.09);
+
+    margin-bottom:22px;
+}
+
+
+.guia strong{
+    color:#7e22ce;
+}
+
+
+/* =========================================================
+   TITULOS SECCIONES
+========================================================= */
+
+.titulo{
+
+    position:relative;
+
+    z-index:2;
+
+    margin:
+        21px 0
+        9px;
+
+    font-size:.82rem;
+
+    letter-spacing:1.1px;
+
+    text-transform:uppercase;
+
+    font-weight:900;
+
+    color:#6b21a8;
+}
+
+
+.titulo::before{
+    content:"✦";
+    color:#ec4899;
+    margin-right:6px;
+}
+
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.botones{
+
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:9px;
+}
+
+
+.botones button{
+
+    border:none;
+
+    border-radius:999px;
+
+    padding:
+        10px 15px;
+
+    font-size:.88rem;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    color:#5b21b6;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ede9fe,
+            #fce7f3
+        );
+
+    border:
+        1px solid
+        rgba(139,92,246,.14);
+
+    box-shadow:
+        0 5px 12px
+        rgba(91,33,182,.10);
+
+    transition:
+        transform .16s,
+        box-shadow .16s,
+        background .16s;
+}
+
+
+.botones button:hover{
+
+    transform:
+        translateY(-2px)
+        scale(1.02);
+
+    box-shadow:
+        0 8px 16px
+        rgba(91,33,182,.18);
+}
+
+
+.botones button.active{
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6d28d9,
+            #a855f7,
+            #ec4899
+        );
+
+    box-shadow:
+        0 8px 18px
+        rgba(126,34,206,.34);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   CAMPOS
+========================================================= */
+
+.campo{
+
+    position:relative;
+
+    z-index:2;
+
+    margin-top:14px;
+}
+
+
+.campo label{
+
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#581c87;
+
+    font-size:.86rem;
+
+    font-weight:800;
+}
+
+
+input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    padding:
+        14px 15px;
+
+    border-radius:16px;
+
+    font-size:1rem;
+
+    color:#3b0764;
+
+    background:
+        rgba(255,255,255,.94);
+
+    border:
+        2px solid
+        #e9d5ff;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.9);
+
+    transition:.18s;
+}
+
+
+input::placeholder{
+    color:#a78bba;
+}
+
+
+input:focus{
+
+    border-color:#a855f7;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(168,85,247,.12),
+        0 8px 18px
+        rgba(126,34,206,.08);
+}
+
+
+/* =========================================================
+   PLATAFORMA DETECTADA
+========================================================= */
+
+.detectado{
+
+    min-height:22px;
+
+    margin-top:7px;
+
+    padding-left:4px;
+
+    font-size:.86rem;
+
+    font-weight:800;
+
+    color:#7e22ce;
+}
+
+
+/* =========================================================
+   AREAS DINAMICAS
+========================================================= */
+
+#perfilArea,
+#tipoArea{
+    display:none;
+}
+
+
+/* =========================================================
+   SALIDA
+========================================================= */
+
+#salida{
+
+    position:relative;
+
+    z-index:2;
+
+    margin-top:10px;
+
+    min-height:350px;
+
+    padding:18px;
+
+    white-space:pre-wrap;
+
+    word-break:break-word;
+
+    border-radius:22px;
+
+    color:#42165d;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffaff,
+            #faf5ff
+        );
+
+    border:
+        2px dashed
+        #c084fc;
+
+    box-shadow:
+        inset 0 0 25px
+        rgba(216,180,254,.18);
+
+    font-family:
+        Consolas,
+        monospace;
+
+    font-size:.84rem;
+
+    line-height:1.55;
+}
+
+
+/* =========================================================
+   BOTONES GRANDES
+========================================================= */
+
+.acciones{
+
+    position:relative;
+
+    z-index:2;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:11px;
+
+    margin-top:20px;
+}
+
+
+.acciones button{
+
+    border:none;
+
+    border-radius:25px;
+
+    padding:15px;
+
+    font-weight:900;
+
+    font-size:.95rem;
+
+    cursor:pointer;
+
+    transition:
+        transform .17s,
+        box-shadow .17s;
+}
+
+
+.acciones button:hover{
+    transform:translateY(-2px);
+}
+
+
+#copiarBtn{
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6d28d9,
+            #9333ea,
+            #ec4899
+        );
+
+    box-shadow:
+        0 8px 18px
+        rgba(109,40,217,.30);
+}
+
+
+#limpiarBtn{
+
+    color:#6b21a8;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ede9fe,
+            #fce7f3,
+            #dbeafe
+        );
+
+    box-shadow:
+        0 8px 16px
+        rgba(109,40,217,.10);
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+
+    position:fixed;
+
+    left:50%;
+    bottom:25px;
+
+    z-index:9999;
+
+    transform:
+        translate(-50%,100px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    padding:
+        12px 21px;
+
+    border-radius:999px;
+
+    color:white;
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4c1d95,
+            #7e22ce,
+            #ec4899
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.25);
+
+    transition:.25s;
+}
+
+
+.toast.visible{
+
+    opacity:1;
+
+    transform:
+        translate(-50%,0);
+}
+
+
+/* =========================================================
+   DETALLES DECORATIVOS
+========================================================= */
+
+.separador{
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+    color:#a855f7;
+
+    letter-spacing:7px;
+
+    margin:
+        17px 0 5px;
+
+    font-size:.85rem;
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media(max-width:480px){
+
+    body{
+        padding:
+            14px 8px
+            45px;
+    }
+
+    .container{
+
+        padding:
+            22px 14px;
+
+        border-radius:25px;
+    }
+
+    h1{
+        font-size:1.55rem;
+    }
+
+    .moon{
+        font-size:2.1rem;
+    }
+
+    .guia{
+        font-size:.84rem;
+    }
+
+    .acciones{
+        grid-template-columns:1fr;
+    }
+
+    #salida{
+        font-size:.76rem;
+        padding:14px;
+    }
+
+    .botones button{
+        padding:
+            9px 12px;
+
+        font-size:.83rem;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
+
 <div class="container">
 
-<h1>🐰💜 LUNALI STREAM 💜🐰</h1>
+<div class="header">
+
+<div class="moon">
+🌙🔮
+</div>
+
+<h1>
+🐰 LUNALI STREAM 🐰
+</h1>
+
+<div class="descripcion">
+Generador mágico de entregas
+</div>
+
+<div class="miniDecor">
+✦ ☾ ✧ 🕸 ✧ ☾ ✦
+</div>
+
+</div>
+
+
 
 <div class="guia">
-<b>Guía:</b><br>
-n: Netflix<br>
-m: Max<br>
-p: Prime Video<br>
-pr: Paramount+<br>
-v: Vix<br>
-va: Vix Anual<br>
-d: Disney+<br>
-c: Crunchyroll<br>
-s: Spotify Individual<br>
-s3: Spotify 3 meses Individual<br>
-fx: Fox One<br><br>
 
-En "Tipo", escribe <b>c</b> para COMPLETA.
-</div>
+<strong>🪄 Abreviaturas mágicas</strong>
+<br><br>
 
-<div class="subtitulo">Administrador en turno</div>
-<div id="adminBtns"></div>
+🌙 n = Netflix<br>
+💫 m = Max<br>
+🍥 c = Crunchyroll<br>
+🌸 v = Vix<br>
+🦊 fx = Fox One<br>
+🔮 u = Universal<br>
+✨ cp = CapCut<br>
+🏰 d = Disney+<br>
+🎬 p = Prime Video<br>
+🌌 pr = Paramount+<br>
+📺 ip = IPTV<br>
+🎧 s = Spotify 1 Mes<br>
+🎵 s3 = Spotify 3 Meses
 
-<input id="plataforma" placeholder="Plataforma / abreviatura">
-<input id="correo" placeholder="Correo">
-<input id="contrasena" placeholder="Contraseña">
-<input id="tipo" placeholder="Tipo">
+<br><br>
 
-<div id="perfilBtns"></div>
-
-<div id="salida"></div>
-
-<button id="copiarBtn">📋 Copiar todo</button>
-<button id="limpiarBtn">🧹 Limpiar formulario</button>
+💜 Escribe la abreviatura y el sistema mostrará automáticamente las opciones disponibles.
 
 </div>
+
+
+
+<div class="titulo">
+Administrador en turno
+</div>
+
+<div
+class="botones"
+id="adminBtns">
+</div>
+
+
+
+<div class="separador">
+✦ ✧ ☾ ✧ ✦
+</div>
+
+
+
+<div class="titulo">
+Datos de la cuenta
+</div>
+
+
+<div class="campo">
+
+<label>
+🔮 Plataforma / abreviatura
+</label>
+
+<input
+id="plataforma"
+placeholder="Ejemplo: p"
+autocomplete="off">
+
+<div
+class="detectado"
+id="plataformaDetectada">
+</div>
+
+</div>
+
+
+
+<div class="campo">
+
+<label>
+💌 Correo
+</label>
+
+<input
+id="correo"
+placeholder="Correo de la cuenta"
+autocomplete="off">
+
+</div>
+
+
+
+<div class="campo">
+
+<label>
+🔐 Contraseña
+</label>
+
+<input
+id="contrasena"
+placeholder="Contraseña"
+autocomplete="off">
+
+</div>
+
+
+
+<div id="tipoArea">
+
+<div class="titulo">
+Tipo de entrega
+</div>
+
+<div
+class="botones"
+id="tipoBtns">
+
+<button
+type="button"
+data-tipo="perfil"
+class="active">
+
+👤 Perfil
+
+</button>
+
+
+<button
+type="button"
+data-tipo="completa">
+
+🔐 Cuenta completa
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<div id="perfilArea">
+
+<div class="titulo">
+Selecciona el perfil
+</div>
+
+<div
+class="botones"
+id="perfilBtns">
+</div>
+
+</div>
+
+
+
+<div class="separador">
+☾ ✦ 🕸 ✦ ☾
+</div>
+
+
+
+<div class="titulo">
+Vista previa del mensaje
+</div>
+
+
+<div id="salida">
+Completa los datos para generar la entrega.
+</div>
+
+
+
+<div class="acciones">
+
+<button id="copiarBtn">
+📋 Copiar mensaje
+</button>
+
+<button id="limpiarBtn">
+🧹 Limpiar formulario
+</button>
+
+</div>
+
+</div>
+
+
+
+<div
+class="toast"
+id="toast">
+
+✅ Copiado
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   ADMINISTRADORES
+========================================================= */
+
+const administradores = [
+
+    {
+        nombre:"Sarita",
+        telefono:"+52 81 3247 4649"
+    },
+
+    {
+        nombre:"Cinthia",
+        telefono:"+52 449 433 1741"
+    },
+
+    {
+        nombre:"Gaby",
+        telefono:"+52 773 342 8005"
+    },
+
+    {
+        nombre:"Brandon",
+        telefono:"+52 271 265 9348"
+    },
+
+    {
+        nombre:"Ninguno",
+        telefono:"+503 7855 5979"
+    }
+
+];
+
+
+/* =========================================================
+   PLATAFORMAS
+========================================================= */
+
+const plataformas = {
+
+
+    /* 5 PERFILES */
+
+    n:{
+        nombre:"NETFLIX",
+        perfiles:5,
+        individual:false,
+        garantia:"25 días"
+    },
+
+    m:{
+        nombre:"MAX",
+        perfiles:5,
+        individual:false,
+        garantia:"25 días"
+    },
+
+    c:{
+        nombre:"CRUNCHYROLL",
+        perfiles:5,
+        individual:false,
+        garantia:"25 días"
+    },
+
+    v:{
+        nombre:"VIX",
+        perfiles:5,
+        individual:false,
+        garantia:"25 días"
+    },
+
+    fx:{
+        nombre:"FOX ONE",
+        perfiles:5,
+        individual:false,
+        garantia:"25 días"
+    },
+
+    u:{
+        nombre:"UNIVERSAL",
+        perfiles:5,
+        individual:false,
+        garantia:"25 días"
+    },
+
+    cp:{
+        nombre:"CAPCUT",
+        perfiles:5,
+        individual:false,
+        garantia:"25 días"
+    },
+
+
+    /* 7 PERFILES */
+
+    d:{
+        nombre:"DISNEY+",
+        perfiles:7,
+        individual:false,
+        garantia:"25 días"
+    },
+
+
+    /* 6 PERFILES */
+
+    p:{
+        nombre:"PRIME VIDEO",
+        perfiles:6,
+        individual:false,
+        garantia:"25 días"
+    },
+
+    pr:{
+        nombre:"PARAMOUNT+",
+        perfiles:6,
+        individual:false,
+        garantia:"25 días"
+    },
+
+
+    /* 3 PERFILES */
+
+    ip:{
+        nombre:"IPTV",
+        perfiles:3,
+        individual:false,
+        garantia:"25 días"
+    },
+
+
+    /* INDIVIDUALES */
+
+    s:{
+        nombre:"SPOTIFY 1 MES",
+        perfiles:0,
+        individual:true,
+        garantia:"25 días"
+    },
+
+    s3:{
+        nombre:"SPOTIFY 3 MESES",
+        perfiles:0,
+        individual:true,
+        garantia:"25 días"
+    }
+
+};
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let administradorSeleccionado =
+    localStorage.getItem(
+        "lunaliAdmin"
+    )
+    || "Sarita";
+
+
+let telefonoSeleccionado =
+    localStorage.getItem(
+        "lunaliTelefono"
+    )
+    || "+52 81 3247 4649";
+
+
+let perfilSeleccionado = "";
+
+let tipoSeleccionado = "perfil";
+
+
+/* =========================================================
+   ELEMENTOS
+========================================================= */
+
+const adminBtns =
+    document.getElementById(
+        "adminBtns"
+    );
+
+const perfilBtns =
+    document.getElementById(
+        "perfilBtns"
+    );
+
+const perfilArea =
+    document.getElementById(
+        "perfilArea"
+    );
+
+const tipoArea =
+    document.getElementById(
+        "tipoArea"
+    );
+
+const tipoBtns =
+    document.getElementById(
+        "tipoBtns"
+    );
+
+const plataformaInput =
+    document.getElementById(
+        "plataforma"
+    );
+
+const correoInput =
+    document.getElementById(
+        "correo"
+    );
+
+const contrasenaInput =
+    document.getElementById(
+        "contrasena"
+    );
+
+const plataformaDetectada =
+    document.getElementById(
+        "plataformaDetectada"
+    );
+
+const salida =
+    document.getElementById(
+        "salida"
+    );
+
+
+/* =========================================================
+   ADMINISTRADORES
+========================================================= */
+
+function crearAdministradores(){
+
+    adminBtns.innerHTML = "";
+
+    administradores.forEach(
+        admin => {
+
+            const btn =
+                document.createElement(
+                    "button"
+                );
+
+            btn.type =
+                "button";
+
+            btn.textContent =
+                admin.nombre;
+
+
+            if(
+                admin.nombre ===
+                administradorSeleccionado
+            ){
+
+                btn.classList.add(
+                    "active"
+                );
+            }
+
+
+            btn.addEventListener(
+                "click",
+                () => {
+
+                    administradorSeleccionado =
+                        admin.nombre;
+
+                    telefonoSeleccionado =
+                        admin.telefono;
+
+
+                    localStorage.setItem(
+                        "lunaliAdmin",
+                        admin.nombre
+                    );
+
+
+                    localStorage.setItem(
+                        "lunaliTelefono",
+                        admin.telefono
+                    );
+
+
+                    actualizarAdministradores();
+
+                    generarMensaje();
+
+                }
+            );
+
+
+            adminBtns.appendChild(
+                btn
+            );
+
+        }
+    );
+
+}
+
+
+function actualizarAdministradores(){
+
+    adminBtns
+    .querySelectorAll("button")
+    .forEach(
+        btn => {
+
+            btn.classList.toggle(
+                "active",
+                btn.textContent ===
+                administradorSeleccionado
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   OBTENER PLATAFORMA
+========================================================= */
+
+function obtenerCodigo(){
+
+    return plataformaInput
+        .value
+        .trim()
+        .toLowerCase();
+
+}
+
+
+function obtenerPlataforma(){
+
+    return plataformas[
+        obtenerCodigo()
+    ]
+    || null;
+
+}
+
+
+/* =========================================================
+   TIPO DE ENTREGA
+========================================================= */
+
+tipoBtns
+.querySelectorAll("button")
+.forEach(
+    btn => {
+
+        btn.addEventListener(
+            "click",
+            () => {
+
+                tipoSeleccionado =
+                    btn.dataset.tipo;
+
+                perfilSeleccionado =
+                    "";
+
+                actualizarTipo();
+
+                actualizarInterfaz();
+
+                generarMensaje();
+
+            }
+        );
+
+    }
+);
+
+
+function actualizarTipo(){
+
+    tipoBtns
+    .querySelectorAll("button")
+    .forEach(
+        btn => {
+
+            btn.classList.toggle(
+                "active",
+                btn.dataset.tipo ===
+                tipoSeleccionado
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   PERFILES
+========================================================= */
+
+function crearPerfiles(){
+
+    const plataforma =
+        obtenerPlataforma();
+
+    perfilBtns.innerHTML =
+        "";
+
+
+    if(
+        !plataforma
+        ||
+        plataforma.individual
+        ||
+        tipoSeleccionado ===
+        "completa"
+    ){
+
+        perfilArea.style.display =
+            "none";
+
+        return;
+
+    }
+
+
+    perfilArea.style.display =
+        "block";
+
+
+    for(
+        let i = 1;
+        i <= plataforma.perfiles;
+        i++
+    ){
+
+        const btn =
+            document.createElement(
+                "button"
+            );
+
+
+        btn.type =
+            "button";
+
+
+        btn.textContent =
+            "Perfil " + i;
+
+
+        if(
+            Number(
+                perfilSeleccionado
+            )
+            === i
+        ){
+
+            btn.classList.add(
+                "active"
+            );
+
+        }
+
+
+        btn.addEventListener(
+            "click",
+            () => {
+
+                perfilSeleccionado =
+                    i;
+
+                actualizarPerfiles();
+
+                generarMensaje();
+
+            }
+        );
+
+
+        perfilBtns.appendChild(
+            btn
+        );
+
+    }
+
+}
+
+
+function actualizarPerfiles(){
+
+    perfilBtns
+    .querySelectorAll("button")
+    .forEach(
+        (btn,index) => {
+
+            btn.classList.toggle(
+                "active",
+                Number(
+                    perfilSeleccionado
+                )
+                ===
+                index + 1
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   ACTUALIZAR INTERFAZ
+========================================================= */
+
+function actualizarInterfaz(){
+
+    const plataforma =
+        obtenerPlataforma();
+
+
+    if(!plataforma){
+
+        tipoArea.style.display =
+            "none";
+
+        perfilArea.style.display =
+            "none";
+
+        perfilBtns.innerHTML =
+            "";
+
+        return;
+
+    }
+
+
+    /* SPOTIFY */
+
+    if(
+        plataforma.individual
+    ){
+
+        tipoArea.style.display =
+            "none";
+
+        perfilArea.style.display =
+            "none";
+
+        perfilSeleccionado =
+            "";
+
+        tipoSeleccionado =
+            "individual";
+
+        return;
+
+    }
+
+
+    /* RESTO DE PLATAFORMAS */
+
+    tipoArea.style.display =
+        "block";
+
+
+    if(
+        tipoSeleccionado ===
+        "individual"
+    ){
+
+        tipoSeleccionado =
+            "perfil";
+
+    }
+
+
+    actualizarTipo();
+
+    crearPerfiles();
+
+}
+
+
+/* =========================================================
+   FECHA
+========================================================= */
+
+function obtenerFecha(){
+
+    const fecha =
+        new Date();
+
+
+    const meses = [
+
+        "ene",
+        "feb",
+        "mar",
+        "abr",
+        "may",
+        "jun",
+        "jul",
+        "ago",
+        "sep",
+        "oct",
+        "nov",
+        "dic"
+
+    ];
+
+
+    return (
+
+        String(
+            fecha.getDate()
+        )
+        .padStart(
+            2,
+            "0"
+        )
+
+        + " "
+
+        + meses[
+            fecha.getMonth()
+        ]
+
+        + " "
+
+        + fecha.getFullYear()
+
+    );
+
+}
+
+
+/* =========================================================
+   PERFIL
+========================================================= */
+
+function obtenerPerfilTexto(
+    plataforma
+){
+
+    if(
+        plataforma.individual
+    ){
+
+        return "Individual";
+
+    }
+
+
+    if(
+        tipoSeleccionado ===
+        "completa"
+    ){
+
+        return "CUENTA COMPLETA";
+
+    }
+
+
+    if(
+        perfilSeleccionado
+    ){
+
+        return perfilSeleccionado;
+
+    }
+
+
+    return "";
+
+}
+
+
+/* =========================================================
+   REGLAS
+========================================================= */
+
+function obtenerReglasExtra(
+    plataforma
+){
+
+    if(
+        plataforma.individual
+    ){
+
+        return `
+📱 Solo 1 dispositivo
+👤 Uso individual`;
+
+    }
+
+
+    return `
+📱 Solo 1 dispositivo`;
+
+}
+
+
+/* =========================================================
+   GENERAR MENSAJE
+========================================================= */
+
+function generarMensaje(){
+
+    const plataforma =
+        obtenerPlataforma();
+
+
+    const correo =
+        correoInput
+        .value
+        .trim();
+
+
+    const contrasena =
+        contrasenaInput
+        .value
+        .trim();
+
+
+    if(!plataforma){
+
+
+        if(
+            plataformaInput
+            .value
+            .trim()
+        ){
+
+            plataformaDetectada
+            .textContent =
+            "⚠️ Plataforma no reconocida";
+
+
+            salida.textContent =
+            "Escribe una abreviatura válida.";
+
+        }
+
+
+        else{
+
+            plataformaDetectada
+            .textContent =
+            "";
+
+
+            salida.textContent =
+            "Completa los datos para generar la entrega.";
+
+        }
+
+
+        return;
+
+    }
+
+
+    plataformaDetectada
+    .textContent =
+    "✅ " + plataforma.nombre;
+
+
+    const perfilTexto =
+        obtenerPerfilTexto(
+            plataforma
+        );
+
+
+    const reglasExtra =
+        obtenerReglasExtra(
+            plataforma
+        );
+
+
+    const texto =
+`══════ ꧁🐰🔮💜 𝐋𝐔𝐍𝐀𝐋𝐈 𝐒𝐓𝐑𝐄𝐀𝐌 💜🔮🐰꧂🌙 ══════
+💜✨ ${plataforma.nombre} ✨💜
+
+📅 ${obtenerFecha()}
+💌 Correo: ${correo}
+🔐 Contraseña: ${contrasena}
+👤 Perfil: ${perfilTexto}
+
+🌙🪄═════ Reglas de Garantía ═════🪄🌙
+
+🔮 ${plataforma.garantia} de garantía
+📸 Envía captura al entrar, de lo contrario se pierde la garantía
+🚫 No modificar datos de facturación.
+🚫 No cambiar correo ni contraseña.
+🚫 Manda captura cuando hayas ingresado correctamente (sin captura no hay garantía).
+👻 No compartas la cuenta${reglasExtra}
+⏳ Tienes 10 minutos para confirmar acceso.
+🕯️ Los reportes tienen respuesta de 24 a 72 hrs.
+
+🌙🪄════🕸️🌸 𝐑𝐄𝐏𝐎𝐑𝐓𝐄𝐒 🌸🕸️════🪄🌙
+https://lunali-reportscare.jdiegu.online/login
+
+💜🌸 𝐃𝐔𝐃𝐀𝐒 🌸💜
+Con el admin que te atendió, únicamente por privado.
+🚫 Domingos no se reciben reportes
+
+🌜💜 Gracias por tu compra en Lunali Store Streaming 💜🌛
+🧙🏻‍♀️💗 𝐀𝐭𝐞𝐧𝐝𝐢ó: ${administradorSeleccionado}
+📱 ${telefonoSeleccionado}
+
+🌙🪄════Gracias por comprar en 𝐋𝐔𝐍𝐀𝐋𝐈 𝐒𝐓𝐑𝐄𝐀𝐌════🪄🌙`;
+
+
+    salida.textContent =
+        texto;
+
+}
+
+
+/* =========================================================
+   EVENTOS
+========================================================= */
+
+plataformaInput
+.addEventListener(
+    "input",
+    () => {
+
+        perfilSeleccionado =
+            "";
+
+        tipoSeleccionado =
+            "perfil";
+
+        actualizarInterfaz();
+
+        generarMensaje();
+
+    }
+);
+
+
+correoInput
+.addEventListener(
+    "input",
+    generarMensaje
+);
+
+
+contrasenaInput
+.addEventListener(
+    "input",
+    generarMensaje
+);
+
+
+/* =========================================================
+   COPIAR
+========================================================= */
+
+document
+.getElementById(
+    "copiarBtn"
+)
+.addEventListener(
+    "click",
+    async () => {
+
+
+        const plataforma =
+            obtenerPlataforma();
+
+
+        if(
+            !plataforma
+        ){
+
+            mostrarToast(
+                "⚠️ Selecciona una plataforma"
+            );
+
+            return;
+
+        }
+
+
+        if(
+            !plataforma.individual
+            &&
+            tipoSeleccionado ===
+            "perfil"
+            &&
+            !perfilSeleccionado
+        ){
+
+            mostrarToast(
+                "⚠️ Selecciona un perfil"
+            );
+
+            return;
+
+        }
+
+
+        const texto =
+            salida.textContent;
+
+
+        try{
+
+            await navigator
+            .clipboard
+            .writeText(
+                texto
+            );
+
+
+            mostrarToast(
+                "🔮 Mensaje copiado"
+            );
+
+        }
+
+
+        catch(error){
+
+            copiarAlternativo(
+                texto
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   COPIA ALTERNATIVA
+========================================================= */
+
+function copiarAlternativo(
+    texto
+){
+
+    const area =
+        document.createElement(
+            "textarea"
+        );
+
+
+    area.value =
+        texto;
+
+
+    area.style.position =
+        "fixed";
+
+
+    area.style.opacity =
+        "0";
+
+
+    document.body
+        .appendChild(
+            area
+        );
+
+
+    area.select();
+
+
+    document.execCommand(
+        "copy"
+    );
+
+
+    area.remove();
+
+
+    mostrarToast(
+        "🔮 Mensaje copiado"
+    );
+
+}
+
+
+/* =========================================================
+   LIMPIAR
+========================================================= */
+
+document
+.getElementById(
+    "limpiarBtn"
+)
+.addEventListener(
+    "click",
+    () => {
+
+
+        plataformaInput.value =
+            "";
+
+
+        correoInput.value =
+            "";
+
+
+        contrasenaInput.value =
+            "";
+
+
+        perfilSeleccionado =
+            "";
+
+
+        tipoSeleccionado =
+            "perfil";
+
+
+        perfilBtns.innerHTML =
+            "";
+
+
+        perfilArea.style.display =
+            "none";
+
+
+        tipoArea.style.display =
+            "none";
+
+
+        plataformaDetectada
+            .textContent =
+            "";
+
+
+        salida.textContent =
+            "Completa los datos para generar la entrega.";
+
+
+        plataformaInput.focus();
+
+    }
+);
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function mostrarToast(
+    mensaje
+){
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent =
+        mensaje;
+
+
+    toast.classList.add(
+        "visible"
+    );
+
+
+    setTimeout(
+        () => {
+
+            toast
+            .classList
+            .remove(
+                "visible"
+            );
+
+        },
+
+        1800
+    );
+
+}
+
+
+/* =========================================================
+   INICIAR
+========================================================= */
+
+crearAdministradores();
+
+actualizarTipo();
+
+actualizarInterfaz();
+
+generarMensaje();
+
+</script>
+
+</body>
+</html>
